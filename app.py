@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
 from werkzeug import secure_filename
@@ -19,15 +19,24 @@ def get_bot_response():
     userText = request.args.get('msg')
     return str(english_bot.get_response(userText))
 
-@app.route('/train', methods = ['GET', 'POST'])
+@app.route("/login", methods = ['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        if request.form['token'] == '123456':
+          return render_template('training.html')
+    return render_template("login.html")
+
+@app.route('/training', methods = ['GET', 'POST'])
 def upload():
+   msg = None
    if request.method == 'POST':
       f = request.files['file']
       f.save(secure_filename(f.filename))
       conversation = open(f.filename,'r').readlines()
       english_bot.set_trainer(ListTrainer)
       english_bot.train(conversation)
-      return 'Chatbot successfully trained with new data. Please test.'
-   return render_template('train.html')
+      msg = '         Chatbot successfully trained with new data. Please test by going back to the Demo page.'
+   return render_template('training.html', msg=msg)
+
 if __name__ == "__main__":
     app.run()

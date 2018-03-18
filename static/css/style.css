@@ -1,5 +1,5 @@
 body {
-    font-family: Garamond;
+    font-family:'Source Sans Pro', sans-serif;
 }
 
 h1 {
@@ -34,7 +34,7 @@ h3 {
 #textInput {
     width: 87%;
     border: none;
-    border-bottom: 3px solid #009688;
+    border-bottom: 3px solid #85929E;
     font-family: monospace;
     font-size: 17px;
 }
@@ -54,7 +54,7 @@ h3 {
 }
 
 .userText span {
-    background-color: #009688;
+    background-color: #85929E;
     padding: 10px;
     border-radius: 2px;
 }
@@ -68,7 +68,7 @@ h3 {
 }
 
 .botText span {
-    background-color: #EF5350;
+    background-color: #F5B041;
     padding: 10px;
     border-radius: 2px;
 }

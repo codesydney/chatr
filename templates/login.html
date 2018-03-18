@@ -22,47 +22,24 @@
             <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search" style="height:68px;">
                 <div class="container"><a class="navbar-brand" href="https://www.code.sydney/" target="_blank">Code.Sydney</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <div
-                        class="collapse navbar-collapse" id="navcol-1"><span class="navbar-text"> </span><a class="btn btn-light ml-auto action-button" role="button" href="{{ url_for('login') }}">Train your bot</a></div>
+                        class="collapse navbar-collapse" id="navcol-1"><span class="navbar-text"> </span><a class="btn btn-light ml-auto action-button" role="button" href="{{ url_for('home') }}">Go to Demo</a></div>
         </div>
         </nav>
-        <h1 class="text-center" style="color:rgb(132,162,193);font-size:45px;height:56px;">Chatbot Demo</h1>
+        <h1 class="text-center" style="color:rgb(132,162,193);font-size:45px;height:56px;">Chatbot Training</h1>
         <br/>
         <div>
             <p class="text-center">An Implementation of <a href="https://github.com/gunthercox/ChatterBot">Chatterbot</a> and <a href="https://github.com/chamkank/flask-chatterbot">Flask-Chatterbot</a></p>
         </div>
     </div>
     </div>
-        <div>
-          <div id="chatbox">
-            <p class="botText"><span>Hi! I'm Chatterbot.</span></p>
-          </div>
-          <div id="userInput">
-            <input id="textInput" type="text" name="msg" placeholder="Message">
-            <input id="buttonInput" type="submit" value="Send">
-          </div>
-          <script>
-            function getBotResponse() {
-              var rawText = $("#textInput").val();
-              var userHtml = '<p class="userText"><span>' + rawText + '</span></p>';
-              $("#textInput").val("");
-              $("#chatbox").append(userHtml);
-              document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
-              $.get("/get", { msg: rawText }).done(function(data) {
-                var botHtml = '<p class="botText"><span>' + data + '</span></p>';
-                $("#chatbox").append(botHtml);
-                document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
-              });
-            }
-            $("#textInput").keypress(function(e) {
-                if(e.which == 13) {
-                    getBotResponse();
-                }
-            });
-            $("#buttonInput").click(function() {
-              getBotResponse();
-            })
-          </script>
-        </div>
+    <div class="login-clean">
+        <form method="post" action="{{ url_for('login') }}">
+            <h2 class="sr-only">Login Form</h2>
+            <div class="illustration"><i class="icon ion-ios-navigate" style="color:#aaaaaa;"></i></div>
+            <div class="form-group"><input class="form-control" type="text" name="token" placeholder="token"></div>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit" style="background-color:#505e6c;">Log In</button></div>
+        </form>
+    </div>
 </body>
 
 </html>
