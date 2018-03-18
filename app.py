@@ -45,4 +45,4 @@ def upload():
     return render_template('training.html', msg=msg)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
