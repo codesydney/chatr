@@ -38,6 +38,9 @@
             <div class="illustration"><i class="icon ion-ios-navigate" style="color:#aaaaaa;"></i></div>
             <div class="form-group"><input class="form-control" type="text" name="token" placeholder="token"></div>
             <div class="form-group"><button class="btn btn-primary btn-block" type="submit" style="background-color:#505e6c;">Log In</button></div>
+            {% if msg %}
+            <div style="height:55px;margin:10px;padding:5px;width:303px;font-size:16px;">{{ msg }}</div>
+            {% endif %}
         </form>
     </div>
 </body>
