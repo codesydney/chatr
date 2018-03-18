@@ -22,12 +22,12 @@ def get_bot_response():
 
 @app.route("/login", methods = ['GET', 'POST'])
 def login():
-    msg = None
+    error = None
     if request.method == 'POST':
         if request.form['token'] == '123456':
           return render_template('training.html')
-        msg = 'Incorrect token. Please try again.'
-    return render_template("login.html", msg=msg)
+        error = 'Incorrect token. Please try again.'
+    return render_template("login.html", error=error)
 
 @app.route('/training', methods = ['GET', 'POST'])
 def upload():
