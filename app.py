@@ -25,7 +25,7 @@ def login():
     error = None
     if request.method == 'POST':
         if request.form['token'] == '123456':
-          return render_template('training.html')
+          return redirect(url_for('upload'))
         error = 'Incorrect token. Please try again.'
     return render_template("login.html", error=error)
 
